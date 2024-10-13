@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+
+    <style>
+        body {
+            font-family: 'Roboto';
+            font-size: 16px;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #6700b5;
+            color: #e8d1f6;
+            padding: 20px 30px;
+        }
+
+        nav {
+            display: flex;
+        }
+
+        nav a {
+            margin-left: 50px;
+            color: #e8d1f6;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        section {
+            padding: 30px;
+        }
+
+        .portfolio-item {
+            margin: 20px 0;
+            background: #fff;
+            border-radius: 5px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo i {
+            margin-right: 10px;
+        }
+
+        .logo-name {
+            font-size: 22px;
+        }
+
+        .logo img {
+            height: 20px;
+        }
+
+        .logo-text {
+            font-style: italic;
+            font-size: 12px;
+        }
+
+        .logo div {
+            display: flex;
+            column-gap: 5px;
+            align-items: center;
+        }
+
+        #about {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .profile img {
+            width: 320px;
+            margin-top: 1em;
+            padding: 0 3em;
+
+        }
+
+        .profile-right img {
+            width: 60px;
+        }
+
+        .profile-right {
+            font-size: 20px;
+            color: #777575;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #6700b5;
+            margin-bottom: 0;
+        }
+
+        .skills-section {
+            display: flex;
+            gap: 5em;
+            padding: 2em 2em;
+        }
+
+        .skill-block {
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            padding: 1.5em;
+            text-align: center;
+            display: grid;
+            width: 150px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-items: center;
+            row-gap: 1em;
+        }
+
+        .skills-section img {
+            height: 38px;
+        }
+
+        .small-t {
+            font-size: 12px;
+        }
+
+        #projects h1,
+        #recommendations h1 {
+            margin: 0;
+        }
+
+        dl {
+            display: grid;
+            row-gap: 1em;
+            padding: 1em 0;
+            padding-left: 3em;
+        }
+
+        dt {
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        hr {
+            width: 70%;
+            border: 1px solid #ddd;
+        }
+
+        dd {
+            display: flex;
+            column-gap: 5px;
+        }
+
+        dd img {
+            width: 15px;
+            height: 12px;
+        }
+
+        .re-block {
+            display: flex;
+            column-gap: 2em;
+            padding: 2em 3em;
+            padding-bottom: 0;
+        }
+
+        .re-b {
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 1em;
+            max-width: 312px;
+        }
+
+        #comments {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+
+        form {
+            display: grid;
+            row-gap: 1em;
+            padding: .5em 0;
+        }
+
+        input {
+            padding: .3em;
+            font-size: 14px;
+            border: 1px solid #a19f9f;
+            border-radius: 5px;
+        }
+
+        textarea {
+            padding: .3em;
+            font-size: 14px;
+            height: 100px;
+            border: 1px solid #a19f9f;
+            border-radius: 5px;
+        }
+
+        button {
+            margin: 0 auto;
+            text-align: center;
+            display: block;
+            margin-top: 2em;
+            padding: .6em 3em;
+            border: 1.5px solid #6700b5;
+            border-radius: 5px;
+            background: #fff;
+            color: #6700b5;
+            font-size: 16px;
+        }
+
+        .goto {
+            text-align: right;
+            padding-bottom: 1em;
+            padding-right: 1em;
+        }
+
+        .goto img {
+            width: 50px;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            /* Stay in place */
+            z-index: 1;
+            /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%;
+            /* Full width */
+            height: 100%;
+            /* Full height */
+            overflow: auto;
+            /* Enable scroll if needed */
+            background-color: rgb(0, 0, 0);
+            /* Fallback color */
+            background-color: rgba(0, 0, 0, 0.4);
+            /* Black w/ opacity */
+        }
+
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            /* 15% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            /* Could be more or less, depending on screen size */
+        }
+
+        /* The Close Button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .modal-content {
+            background: #e8bdf0;
+            max-width: 358px;
+            padding: 2em;
+            border-radius: 10px;
+            text-align: center;
+            display: grid;
+        }
+        .fa-check {
+            color: #6700b5;
+    padding: 5px;
+    border: 2px solid #6700b5;
+    border-radius: 50%;
+    font-size: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <div class="logo-name">Monu Mehta</div>
+            <div class="logo-text"><img src="project-portfollio/inbox.png"> monu@gmail.com</div>
+            <div class="logo-text"><img src="project-portfollio/call.png"> +917737121911</div>
+        </div>
+
+        <nav>
+            <a href="#about">About Me</a>
+            <a href="#skills">Skills</a>
+
+            <a href="#projects">Projects</a>
+            <a href="#recommendations">Recommendations</a>
+        </nav>
+    </header>
+
+    <section id="about">
+        <div class="profile"><img src="project-portfollio/profile.png"> </div>
+        <div class="profile-right">
+            <h1>Hi, I'm Monu Mehta! <img src="project-portfollio/hand.png" alt=""></h1>
+            <p>I am a full stack JavaScript developer with 8 years of experience in building dynamic web applications.
+                Proficient in frameworks like Node.js, React, and Express, I excel at creating seamless user experiences
+                and robust backend solutions. My expertise includes API development, database management, and
+                performance optimization. Passionate about leveraging the latest technologies to drive innovation and
+                efficiency in every project.</p>
+        </div>
+    </section>
+
+
+    <section id="skills">
+        <h1>Skills</h1>
+        <div class="skills-section">
+            <div class="skill-block">
+                <img src="project-portfollio/html.png" alt="">
+                <div class="small-t">Html</div>
+                <div class="exp"> 2 Years experience</div>
+            </div>
+            <div class="skill-block">
+                <img src="project-portfollio/js.png" alt="">
+                <div class="small-t">JavaScript</div>
+                <div class="exp"> 1.5 Years experience</div>
+            </div>
+            <div class="skill-block">
+                <img src="project-portfollio/git.png" alt="">
+                <div class="small-t">Git</div>
+                <div class="exp"> .5 Years experience</div>
+            </div>
+            <div class="skill-block">
+                <img src="project-portfollio/mongo.png" alt="">
+                <div class="small-t">MongoDB</div>
+                <div class="exp"> 1 Years experience</div>
+            </div>
+        </div>
+        <div class="skills-section">
+            <div class="skill-block">
+                <img src="project-portfollio/angular.png" alt="">
+                <div class="small-t">Angular</div>
+                <div class="exp"> 1 Years experience</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="projects">
+        <h1>Projects</h1>
+
+        <div class="prokect-section">
+            <dl>
+                <dt>Datadiggers</dt>
+                <dd> <img src="project-portfollio/dot.png">
+                    <div> Discover an unbeatable selection of products at your fingertips, from trendy fashion to
+                        cutting-edge electronics. Shop with confidence and enjoy fast shipping and exceptional customer
+                        service!</div>
+                </dd>
+                <hr />
+                <dt>SaljaPro</dt>
+                <dd> <img src="project-portfollio/dot.png">
+                    <div>Transform your space with our curated collection of stylish and affordable furniture. From cozy
+                        living room sets to elegant dining tables, find everything you need to create your dream home!
+                    </div>
+                </dd>
+                <hr />
+                <dt>Game91</dt>
+                <dd> <img src="project-portfollio/dot.png">
+                    <div>Level up your gaming experience with our vast library of the latest titles and classic
+                        favorites. Join our community to connect, compete, and conquer the gaming world together!</div>
+                </dd>
+            </dl>
+        </div>
+
+    </section>
+
+
+    <section id="recommendations">
+        <h1>Recommendations</h1>
+        <div class="re-block">
+            <div class="re-b">
+                "I highly recommend Monu Mehta for his exceptional skills as a full-stack JavaScript developer. His
+                expertise in both front-end and back-end technologies, combined with his problem-solving abilities,
+                consistently delivers high-quality results."
+            </div>
+            <div class="re-b">
+                "Monu Mehta is a talented full-stack JavaScript developer whose ability to seamlessly integrate
+                front-end and back-end solutions sets him apart. His dedication to innovation and attention to detail
+                make him an invaluable asset to any project."
+            </div>
+            <div class="re-b">
+                "Monu Mehta is an outstanding full-stack JavaScript developer, known for his strong coding skills and
+                creative problem-solving. His collaborative approach and commitment to delivering robust solutions make
+                him a great asset to any team."
+            </div>
+        </div>
+        <div class="re-block">
+            <div class="re-b">
+                "I highly recommend Monu Mehta for his exceptional skills as a full-stack JavaScript developer. His
+                expertise in both front-end and back-end technologies, combined with his problem-solving abilities,
+                consistently delivers high-quality results."
+            </div>
+        </div>
+    </section>
+
+    <section id="comments">
+        <h2>Leave a Recommendation</h2>
+        <form action="">
+            <input type="text" placeholder="Name (Optional)">
+            <textarea name="" id="" placeholder="Message"></textarea>
+        </form>
+        <button id="myBtn">Submit</button>
+    </section>
+
+    <div class="goto">
+        <img src="project-portfollio/goto.png" alt="">
+    </div>
+
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close"><i class="fa fa-check" aria-hidden="true"></i></span>
+            <p>Thank you for submitting a recommendation!</p>
+            <button>Ok</button>
+        </div>
+
+    </div>
+    <script>
+        // Get the modal
+        var modal = document.getElementById("myModal");
+
+        // Get the button that opens the modal
+        var btn = document.getElementById("myBtn");
+
+        // Get the <span> element that closes the modal
+        var span = document.getElementsByClassName("close")[0];
+
+        // When the user clicks on the button, open the modal
+        btn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // When the user clicks on <span> (x), close the modal
+        span.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+
+</html>
